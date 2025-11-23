@@ -58,7 +58,7 @@ As funcionalidades de negócio permanecem idênticas ao MVP original:
 
 Note a ausência dos arquivos `.module.ts`:
 
-````text
+```text
 src/app/
 ├── auth/
 │   ├── login/                 # Componente Standalone de Login
@@ -73,15 +73,17 @@ src/app/
 ├── app.routes.ts              # Configuração de rotas principal
 ├── app.config.ts              # Configuração global (Providers)
 └── main.ts                    # Ponto de entrada da aplicação
+```
 
 ---
 
 ## 🚀 Como Rodar o Projeto
 
 1. **Instale as dependências:**
+
    ```bash
    npm install
-````
+   ```
 
 2. **Execute o servidor:**
 
@@ -99,4 +101,17 @@ src/app/
 
 ---
 
-<div align="center"> Estudo de caso desenvolvido com 💙 e Angular 19 Standalone </div>
+## 🔮 Próximos Passos (Roadmap v2.0)
+
+Para a próxima sprint de evolução (baseado nos requisitos originais do PDF não incluídos no MVP), estão planejados:
+
+- [ ] **Visualização de Dados:** Implementação de gráficos de evolução patrimonial (`ngx-charts` ou `Chart.js`).
+- [ ] **Histórico:** Implementação da tabela de histórico de investimentos (`GET /investimentos`).
+- [ ] **Testes Unitários:** Cobertura de testes com Jasmine/Karma focando em Services e Validadores (Meta: 80%).
+- [ ] **Segurança:** Migração das fontes CDN para arquivos locais (para conformidade com intranet).
+
+---
+
+<div align="center">
+  Estudo de caso desenvolvido com 💙 e Angular 19 Standalone
+</div>
