@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;   /* organiza os elementos em coluna */
+  width: 90%;               /* limite em telas grandes */
+  max-width: 400px;         /* limite em telas grandes */
+  margin: 0 auto;         /* centraliza horizontalmente */
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;   /* borda cinza clara */
+  border-radius: 4px;         /* cantos arredondados */
+  font-size: 14px; 
+}
+
+button {
+  padding: 10px;
+  background-color: #1976d2; /* azul padrão Angular Material */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #1565c0;  /* azul mais escuro no hover */
+  }
+}

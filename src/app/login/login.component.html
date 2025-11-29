@@ -1,1 +1,18 @@
-<p>login works!</p>
+<h2>Login</h2>
+
+<form>
+  <!-- Campo de email -->
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" [(ngModel)]="email" required>
+  </div>
+
+  <!-- Campo de senha -->
+  <div>
+    <label for="password">Senha:</label>
+    <input type="password" id="password" name="password" [(ngModel)]="password" required minlength="6">
+  </div>
+
+  <!-- Botão de envio -->
+  <button type="submit">Entrar</button>
+</form>
