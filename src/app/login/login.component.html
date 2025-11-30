@@ -1,18 +1,50 @@
 <h2>Login</h2>
 
-<form>
+<!-- Adicionado #loginForm="ngForm" para que o Angular saiba que este formulário é controlado -->
+<form #loginForm="ngForm" (ngSubmit)="login()"> <!-- adiciona referência do formulário e captura o  submit -->
+  
   <!-- Campo de email -->
-  <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" [(ngModel)]="email" required>
-  </div>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput
+      type="email" 
+      id="email" 
+      name="email" 
+      [(ngModel)]="email" 
+      required>
+    <!-- Mensagem dinâmica de erro -->
+    @if (loginForm.submitted && !email) {
+      <!-- aparece se o formulário for enviado e o campo está vazio -->
+      <mat-error>Email é obrigatório</mat-error>
+    }
+  </mat-form-field>
+ 
 
   <!-- Campo de senha -->
-  <div>
-    <label for="password">Senha:</label>
-    <input type="password" id="password" name="password" [(ngModel)]="password" required minlength="6">
-  </div>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Senha</mat-label>
+    <input matInput
+      type="password" 
+      id="password" 
+      name="password" 
+      [(ngModel)]="password" 
+      required 
+      minlength="6">
+
+    <!-- Mensagems dinâmicas de erro -->
+    @if (loginForm.submitted && !password) {
+      <!-- aparece se o formulário for enviado e o campo está vazio -->
+      <mat-error>Senha é obrigatória</mat-error>
+    }
+    @if (loginForm.submitted && password.length < 6) {
+      <!-- aparece se a senha foi preenchida mas tem menos de 6 caracteres -->
+      <mat-error>Senha deve ter pelo menos 6 caracteres</mat-error>    
+    }
+  </mat-form-field>
 
   <!-- Botão de envio -->
-  <button type="submit">Entrar</button>
+  <!-- Desabilitamos o botão se o formulário for inválido -->
+  <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+    Entrar
+  </button> <!-- evita submit com dados inválidos -->
 </form>
