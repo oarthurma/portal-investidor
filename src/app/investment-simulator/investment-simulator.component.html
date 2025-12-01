@@ -1,0 +1,62 @@
+<mat-card class="simulator-card"> 
+  <mat-card-header>
+    <mat-card-title>Simulador de Investimento</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #simulatorForm="ngForm" (ngSubmit)="simular()">
+      
+      <!-- Tipo de investimento -->
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Tipo de Investimento</mat-label>
+        <mat-select name="tipo" [(ngModel)]="tipo" required>
+          <mat-option value="CDB">CDB</mat-option>
+          <mat-option value="Fundo">Fundo Multimercado</mat-option>
+          <mat-option value="Tesouro">Tesouro Direto</mat-option>
+        </mat-select>
+      </mat-form-field>
+        @if (simulatorForm.submitted && !tipo) {
+          <small style="color: red">Selecione um tipo de investimento</small>
+        }
+      
+        <!-- Valor a investir -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Valor a Investir (R$)</mat-label>
+          <input matInput type="number" name="valor" id="valor" [(ngModel)]="valor" required min="100">
+        </mat-form-field>
+          @if (simulatorForm.submitted && !valor) {
+            <small style="color: red">Informe o valor</small>
+          }
+          @if (simulatorForm.submitted && valor < 100) {
+            <small style="color:red">O valor mínimo é R$ 100</small>
+          }
+        
+        <!-- Prazo em meses -->
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Prazo (meses):</mat-label>
+          <input matInput type="number" name="prazo" [(ngModel)]="prazoMeses" required min="1">
+        </mat-form-field>
+          @if (simulatorForm.submitted && !prazoMeses) {
+            <small style="color:red">Informe o prazo</small>
+          }
+          @if (simulatorForm.submitted && prazoMeses < 1) {
+            <small style="color:red">O prazo deve ser pelo menos 1 mês</small>
+          }
+        
+        <!-- Botão de simulação -->
+        <div style="text-align: right; margin-top: 16px;">
+          <button mat-raised-button color="primary" type="submit" [disabled]="simulatorForm.invalid">
+            Simular
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+
+  <!-- Resultado da simulação -->
+  <mat-card-content *ngIf="resultado">
+    <h3>Resultado da Simulação</h3>
+    <p><strong>Valor Final:</strong>{{ resultado.valorFinal }}</p>
+    <p><strong>Rentabilidade:</strong>{{ resultado.rentabilidade }}</p> 
+    <p><strong>Detalhes:</strong> {{ resultado.detalhes }}</p>  
+  </mat-card-content>
+</mat-card>
